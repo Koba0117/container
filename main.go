@@ -6,7 +6,16 @@ import (
 	"os/exec"
 )
 
-func main() {}
+func main() {
+	switch os.Args[1] {
+	case "run":
+		parent()
+	case "child":
+		child()
+	default:
+		panic("What should I do")
+	}
+}
 
 func parent() {
 	cmd := exec.Command("/proc/self/exe", append([]string{"child"}, os.Args[2:]...)...)
